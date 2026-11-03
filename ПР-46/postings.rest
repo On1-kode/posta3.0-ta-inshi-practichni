@@ -1,0 +1,53 @@
+@baseUrl = http://localhost:5080
+
+### Список відправлень. Після зупинки сервера запит дає помилку з’єднання.
+GET {{baseUrl}}/postings
+
+### Відсутній запис: 404
+GET {{baseUrl}}/postings/999999
+
+### Некоректні дані: 400 з об’єктом errors
+POST {{baseUrl}}/postings
+Content-Type: application/json
+
+{
+  "trackNumber": "",
+  "weight": 0,
+  "senderAddress": "",
+  "recipientAddress": "",
+  "status": ""
+}
+
+### Створення: 201
+POST {{baseUrl}}/postings
+Content-Type: application/json
+
+{
+  "trackNumber": "UA001",
+  "weight": 1.5,
+  "senderAddress": "Київ",
+  "recipientAddress": "Львів",
+  "status": "Прийнято"
+}
+
+### Отримання за ідентифікатором: 200 або 404
+GET {{baseUrl}}/postings/1
+
+### Оновлення: 200 або 404
+PUT {{baseUrl}}/postings/1
+Content-Type: application/json
+
+{
+  "trackNumber": "UA001",
+  "weight": 1.5,
+  "senderAddress": "Київ",
+  "recipientAddress": "Львів",
+  "status": "Доставлено"
+}
+
+### Видалення: 204 або 404
+DELETE {{baseUrl}}/postings/1
+
+### Для перевірки 500 тимчасово замінити тіло GET /postings на:
+### throw new InvalidOperationException("Перевірка глобального обробника");
+GET {{baseUrl}}/postings
