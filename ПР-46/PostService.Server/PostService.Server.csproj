@@ -6,5 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../PostService.Contracts/PostService.Contracts.csproj" />
+    <ProjectReference Include="../PostService.Business/PostService.Business.csproj" />
+    <Content Include="../PostService.WebClient/**/*"
+             Link="wwwroot/%(RecursiveDir)%(Filename)%(Extension)"
+             CopyToOutputDirectory="PreserveNewest"
+             CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

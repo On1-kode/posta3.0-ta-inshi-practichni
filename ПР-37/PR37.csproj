@@ -5,4 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="PostService.Data/**/*.cs" />
+    <ProjectReference Include="PostService.Data/PostService.Data.csproj" />
+  </ItemGroup>
 </Project>

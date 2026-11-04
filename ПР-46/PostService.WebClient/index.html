@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Поштові відправлення</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Поштові відправлення</h1>
+      <div class="toolbar">
+        <button id="add" type="button">Додати відправлення</button>
+        <button id="reload" class="secondary" type="button">Оновити список</button>
+      </div>
+    </header>
+
+    <div id="notice" role="status" aria-live="polite" hidden>
+      <p id="message"></p>
+      <ul id="errors"></ul>
+      <div id="retry-actions" hidden>
+        <button id="retry" type="button">Повторити</button>
+        <button id="cancel-retry" type="button" class="secondary">Скасувати</button>
+      </div>
+    </div>
+
+    <section aria-labelledby="list-title">
+      <h2 id="list-title">Список відправлень</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Id</th><th>Трек-номер</th><th>Вага, кг</th><th>Відправник</th>
+            <th>Отримувач</th><th>Статус</th><th>Дії</th>
+          </tr></thead>
+          <tbody id="postings"></tbody>
+        </table>
+      </div>
+      <p id="empty" hidden>Відправлень поки немає. Додайте перше відправлення.</p>
+    </section>
+
+    <section id="editor" aria-labelledby="editor-title" hidden>
+      <h2 id="editor-title">Нове відправлення</h2>
+      <form id="posting-form" novalidate>
+        <div class="fields">
+          <label>Трек-номер<input id="track" name="trackNumber" autocomplete="off" required></label>
+          <label>Вага, кг<input id="weight" name="weight" type="number" min="0.01" step="0.01" required></label>
+          <label>Адреса відправника<input id="sender" name="senderAddress" required></label>
+          <label>Адреса отримувача<input id="recipient" name="recipientAddress" required></label>
+          <label>Статус доставки<input id="status" name="status" required></label>
+        </div>
+        <div class="toolbar">
+          <button id="save" type="submit">Зберегти</button>
+          <button id="cancel" type="button" class="secondary">Скасувати</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

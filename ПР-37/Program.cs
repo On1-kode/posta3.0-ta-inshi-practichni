@@ -1,4 +1,6 @@
 using System.Text;
+using PostService.Data.Models;
+using PostService.Data.Repositories;
 
 Console.OutputEncoding = Encoding.UTF8;
 
@@ -23,54 +25,3 @@ Console.WriteLine("Контакти після оновлення Id = 1 і ви
 foreach (var contact in contacts.GetAll()) Console.WriteLine(contact);
 Console.WriteLine("\nВідправлення після роботи з контактами:");
 foreach (var posting in postings.GetAll()) Console.WriteLine(posting);
-
-public class Model
-{
-    public int Id { get; set; }
-}
-
-public class Posting : Model
-{
-    public string TrackNumber { get; set; } = "";
-    public double Weight { get; set; }
-    public string SenderAddress { get; set; } = "";
-    public string RecipientAddress { get; set; } = "";
-    public string Status { get; set; } = "";
-
-    public override string ToString() => $"{Id}: {TrackNumber}, {Weight} кг, {SenderAddress} → {RecipientAddress}, {Status}";
-}
-
-public class ContactPerson : Model
-{
-    public string Name { get; set; } = "";
-    public string Phone { get; set; } = "";
-    public string Email { get; set; } = "";
-
-    public override string ToString() => $"{Id}: {Name}, {Phone}, {Email}";
-}
-
-public interface IRepository<T> where T : Model
-{
-    void Add(T entity);
-    T? GetById(int id);
-    List<T> GetAll();
-    void Update(T entity);
-    void Delete(int id);
-}
-
-public class GenericRepository<T> : IRepository<T> where T : Model
-{
-    private static readonly List<T> items = new();
-
-    public void Add(T entity) => items.Add(entity);
-    public T? GetById(int id) => items.Find(item => item.Id == id);
-    public List<T> GetAll() => new(items);
-
-    public void Update(T entity)
-    {
-        int index = items.FindIndex(item => item.Id == entity.Id);
-        if (index >= 0) items[index] = entity;
-    }
-
-    public void Delete(int id) => items.RemoveAll(item => item.Id == id);
-}
