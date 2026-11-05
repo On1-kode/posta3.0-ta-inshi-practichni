@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PostService</title><link rel="stylesheet" href="styles.css"><script src="app.js" defer></script></head>
+<body><header><a href="#home" class="brand">PostService</a><nav aria-label="Основна навігація"><a href="#home">Головна</a><a href="#list">Відправлення</a><a href="#about">Про програму</a></nav></header>
+<main><div id="notice" role="status" hidden></div>
+<section id="home"><h1>Облік поштових відправлень</h1><p>Створюйте відправлення, переглядайте деталі та змінюйте дані.</p><p><a class="button" href="#list">Список відправлень</a> <a href="#about">Про програму</a></p></section>
+<section id="about" hidden><h1>Про програму</h1><p>PostService — навчальний застосунок для обліку поштових відправлень.</p><p>Вебклієнт і Windows Forms працюють зі спільним REST API. Дані зберігаються в SQLite через EF Core та узагальнений репозиторій.</p><p>Вартість розраховує сервер за навчальними тарифами: відділення — 40 + 10 грн/кг, курʼєр — 70 + 15 грн/кг, експрес — 100 + 20 грн/кг.</p><a href="#home">На головну</a></section>
+<section id="list" hidden><h1>Список поштових відправлень</h1><div class="toolbar"><a href="#new" class="button">Нове відправлення</a><button id="refresh">Оновити</button></div><p id="count"></p><div class="table-wrap"><table><thead><tr><th>Відправник</th><th>Отримувач</th><th>Вміст</th><th>Доставка</th><th>Вага, кг</th><th>Вартість, грн</th><th>Дії</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section id="editor" hidden><a href="#list">← До списку</a><h1 id="editor-title">Нове відправлення</h1><p>Заповніть відправника, отримувача, вміст, спосіб доставки, вагу й розміри. Вартість розрахує сервер.</p><form id="posting-form" novalidate></form></section>
+<section id="details" hidden><a href="#list">← До списку</a><h1>Деталі відправлення</h1><dl id="details-data"></dl></section>
+</main><dialog id="delete-dialog"><h2>Підтвердження видалення</h2><p id="delete-text"></p><button id="confirm-delete">Видалити</button> <button id="cancel-delete">Скасувати</button></dialog>
+<dialog id="retry-dialog"><h2>Сервер недоступний</h2><p>Перевірте з’єднання та повторіть спробу.</p><button id="retry">Повторити</button> <button id="cancel-retry">Скасувати</button></dialog>
+<footer>PostService · Облік поштових відправлень</footer></body></html>

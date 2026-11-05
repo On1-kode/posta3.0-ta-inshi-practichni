@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:5082
+
+### Отримати список — 200
+GET {{baseUrl}}/postings
+
+### Створити відправлення — 201
+# @name createPosting
+POST {{baseUrl}}/postings
+Content-Type: application/json
+
+{
+  "from": "Дмитро, Київ",
+  "to": "Олена, Львів",
+  "content": "Книги",
+  "deliveryType": 0,
+  "weight": 2,
+  "width": 30,
+  "height": 20,
+  "depth": 10,
+  "value": 500,
+  "description": "Обережно"
+}
+
+### Отримати створене — 200
+GET {{baseUrl}}/postings/{{createPosting.response.body.$.id}}
+
+### Відсутній запис — 404
+GET {{baseUrl}}/postings/2147483647
+
+### Оновити — 200
+PUT {{baseUrl}}/postings/{{createPosting.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "from": "Дмитро, Київ",
+  "to": "Олена, Львів",
+  "content": "Книги",
+  "deliveryType": 1,
+  "weight": 3,
+  "width": 30,
+  "height": 20,
+  "depth": 10,
+  "value": 500,
+  "description": "Обережно"
+}
+
+### Перевірити зміну — 200, вага 3, ціна 115
+GET {{baseUrl}}/postings/{{createPosting.response.body.$.id}}
+
+### Видалити — 204
+DELETE {{baseUrl}}/postings/{{createPosting.response.body.$.id}}
+
+### Перевірити видалення — 404
+GET {{baseUrl}}/postings/{{createPosting.response.body.$.id}}
+
+### Помилка перевірки даних — 400
+POST {{baseUrl}}/postings
+Content-Type: application/json
+
+{"from":"","to":"","content":"","weight":0,"width":0,"height":0,"depth":0,"deliveryType":99}

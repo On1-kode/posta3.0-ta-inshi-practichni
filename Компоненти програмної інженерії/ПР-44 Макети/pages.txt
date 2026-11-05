@@ -1,0 +1,16 @@
+win-home
+win-list
+win-new
+win-errors
+win-details
+win-about
+win-delete
+web-home
+web-list
+web-new
+web-errors
+web-details
+web-about
+web-delete
+web-mobile-list
+web-mobile-errors

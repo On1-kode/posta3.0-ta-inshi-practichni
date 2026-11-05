@@ -6,3 +6,8 @@
 *.doc
 *.docx
 *.pdf
+
+*.db
+*.db-shm
+*.db-wal
+*.slnLaunch.user
