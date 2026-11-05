@@ -58,7 +58,7 @@ Windows Forms і вебклієнт мають три блоки редакто�
 | 41 База даних | [Етапи/ПР-41 SQLite ADO.NET](Етапи/ПР-41%20SQLite%20ADO.NET) — параметризований SQL, CreateDb, postings-ado.db |
 | 42 Windows Forms | [Етапи/ПР-42 Windows Forms](Етапи/ПР-42%20Windows%20Forms) — прямий HttpClient у формі, список і видалення |
 | 43 EF Core | PostServiceSolution/PostService.DataAccess — контекст і generic repository |
-| 44 Макети | [ПР-44 Макети](ПР-44%20Макети) — редагований diagrams.net та 16 PNG |
+| 44 Макети | [ПР-44 Макети](ПР-44%20Макети) — редагований diagrams.net; зображення подаються окремо в Classroom |
 | 46 Обробка помилок | PostServiceSolution/PostService.App/PostServiceClient.cs, PostingList.cs, PostingEditor.cs, Program.cs |
 | 47–48 Windows Forms | PostServiceSolution/PostService.App — список, спільний редактор, перевірка, збереження і скасування |
 | 49–50 Web | PostServiceSolution/PostService/wwwroot — головна, про програму, список, деталі й редактор |
