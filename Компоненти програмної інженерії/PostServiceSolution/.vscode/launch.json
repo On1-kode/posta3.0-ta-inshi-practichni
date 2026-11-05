@@ -1,1 +1,0 @@
-{"version":"0.2.0","configurations":[{"name":"PostService","type":"coreclr","request":"launch","preLaunchTask":"build","program":"${workspaceFolder}/PostService/bin/Debug/net8.0/PostService.dll","cwd":"${workspaceFolder}/PostService","env":{"ASPNETCORE_URLS":"http://localhost:5082"}}]}
