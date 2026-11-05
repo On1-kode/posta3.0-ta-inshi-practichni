@@ -19,7 +19,7 @@ public class PostingList : Form
         AppStyle.Apply(this);
         Width = 1320; Height = 780; MinimumSize = new Size(980, 600); StartPosition = FormStartPosition.CenterScreen;
         string[] fields = ["Id", "SenderName", "From", "RecipientName", "To", "Content", "DeliveryType", "Weight", "Price", "SenderPhone", "SenderAddress", "RecipientPhone", "RecipientAddress", "Width", "Height", "Depth", "Value", "Description", "CreatedAt"];
-        string[] titles = ["Id", "Відправник", "Місто відправлення", "Отримувач", "Місто отримання", "Вміст", "Доставка", "Вага, кг", "Вартість, грн", "Телефон відправника", "Адреса відправлення", "Телефон отримувача", "Адреса отримання", "Ширина, см", "Висота, см", "Глибина, см", "Цінність, грн", "Коментар", "Створено"];
+        string[] titles = ["Id", "Відправник", "Місто відправлення", "Отримувач", "Місто отримання", "Вміст", "Доставка", "Вага, кг", "Вартість, грн", "Телефон відправника", "Адреса відправлення", "Телефон отримувача", "Адреса отримання", "Ширина, см", "Висота, см", "Довжина, см", "Цінність, грн", "Коментар", "Створено"];
         for (int i = 0; i < fields.Length; i++) gridPostings.Columns.Add(new DataGridViewTextBoxColumn
         {
             Name = fields[i], DataPropertyName = fields[i], HeaderText = titles[i],

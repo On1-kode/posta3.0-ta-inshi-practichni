@@ -45,13 +45,34 @@ public class PostingEditor : Form
             var hint = new Label { AutoSize = true, ForeColor = Color.Firebrick, Dock = DockStyle.Fill, Margin = new Padding(8, 3, 0, 0), MaximumSize = new Size(210, 0) };
             hints[field] = hint; cell.Controls.Add(hint, 1, 1); return cell;
         }
+        Control InlineField(string field, string title)
+        {
+            var row = new TableLayoutPanel { Dock = DockStyle.Fill, AutoSize = true, ColumnCount = 3, Padding = new Padding(0, 2, 12, 4), Margin = new Padding(0) };
+            row.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 170)); row.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 285)); row.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            row.Controls.Add(new Label { Text = title, AutoSize = true, Padding = new Padding(0, 3, 0, 0) }, 0, 0);
+            var box = new TextBox { Name = field, Dock = DockStyle.Fill, ReadOnly = readOnly };
+            if (posting is not null) box.Text = Convert.ToString(typeof(PostingGetDto).GetProperty(field)!.GetValue(posting), CultureInfo.CurrentCulture) ?? "";
+            inputs[field] = box; row.Controls.Add(box, 1, 0);
+            var hint = new Label { AutoSize = true, ForeColor = Color.Firebrick, Dock = DockStyle.Fill, MaximumSize = new Size(450, 0), Padding = new Padding(15, 3, 0, 0) };
+            hints[field] = hint; row.Controls.Add(hint, 2, 0); return row;
+        }
         void Group(int column, int row, string title, (string Field, string Title)[] fields, bool wide = false)
         {
             var card = new TableLayoutPanel { Dock = DockStyle.Fill, AutoSize = true, BackColor = Color.White, Padding = new Padding(14), Margin = new Padding(0, 0, column == 0 && !wide ? 16 : 0, 18), ColumnCount = wide ? 2 : 1 };
             if (wide) { card.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50)); card.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50)); }
             var label = new Label { Text = title, AutoSize = true, Font = new Font("Segoe UI", 13, FontStyle.Bold), ForeColor = AppStyle.Accent, Margin = new Padding(0, 0, 0, 10) };
             card.Controls.Add(label, 0, 0); if (wide) card.SetColumnSpan(label, 2);
-            for (int i = 0; i < fields.Length; i++) card.Controls.Add(Field(fields[i].Field, fields[i].Title), wide ? i % 2 : 0, wide ? i / 2 + 1 : i + 1);
+            if (!wide)
+                for (int i = 0; i < fields.Length; i++) card.Controls.Add(Field(fields[i].Field, fields[i].Title), 0, i + 1);
+            else
+            {
+                for (int i = 0; i < 4; i++) card.Controls.Add(Field(fields[i].Field, fields[i].Title), i % 2, i / 2 + 1);
+                int nextRow = 3;
+                foreach (var field in new[] { ("Depth", "Довжина, см *"), ("Width", "Ширина, см *"), ("Height", "Висота, см *"), ("Description", "Коментар") })
+                {
+                    var input = InlineField(field.Item1, field.Item2); card.Controls.Add(input, 0, nextRow++); card.SetColumnSpan(input, 2);
+                }
+            }
             cards.Controls.Add(card, column, row); if (wide) cards.SetColumnSpan(card, 2);
         }
         Group(0, 0, "01  Відправник", [("SenderName", "ПІБ *"), ("SenderPhone", "Телефон *"), ("From", "Місто *"), ("SenderAddress", "Адреса або відділення *")]);

@@ -3,7 +3,7 @@ const $ = s => document.querySelector(s);
 const groups = [
  {title:"Відправник", fields:[["senderName","ПІБ","text","Дмитро Коваль"],["senderPhone","Телефон","tel","+380 67 123 45 67"],["from","Місто","text","Київ"],["senderAddress","Адреса або відділення","text","Відділення №12"]]},
  {title:"Отримувач", fields:[["recipientName","ПІБ","text","Олена Бондар"],["recipientPhone","Телефон","tel","+380 93 123 45 67"],["to","Місто","text","Львів"],["recipientAddress","Адреса або відділення","text","Відділення №5 або вулиця, будинок"]]},
- {title:"Посилка та доставка", fields:[["content","Вміст посилки","text","Книги"],["deliveryType","Спосіб доставки","select"],["weight","Вага, кг","number","2"],["width","Ширина, см","number","30"],["height","Висота, см","number","20"],["depth","Глибина, см","number","10"],["value","Оголошена цінність, грн","number","500"],["description","Коментар до відправлення","text","Необов’язково"]]}
+ {title:"Посилка та доставка", fields:[["content","Вміст посилки","text","Книги"],["deliveryType","Спосіб доставки","select"],["weight","Вага, кг","number","2"],["width","Ширина, см","number","30"],["height","Висота, см","number","20"],["depth","Довжина, см","number","10"],["value","Оголошена цінність, грн","number","500"],["description","Коментар до відправлення","text","Необов’язково"]]}
 ];
 const fields = [...groups.flatMap(g=>g.fields),["price","Вартість, грн","readonly"],["createdAt","Дата створення","readonly"]];
 const required = ["senderName","senderPhone","from","senderAddress","recipientName","recipientPhone","to","recipientAddress","content"];
