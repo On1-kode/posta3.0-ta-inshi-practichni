@@ -4,6 +4,12 @@ public class Posting : ModelBase, ICloneable
 {
     public string From { get; set; } = "";
     public string To { get; set; } = "";
+    public string SenderName { get; set; } = "";
+    public string SenderPhone { get; set; } = "";
+    public string SenderAddress { get; set; } = "";
+    public string RecipientName { get; set; } = "";
+    public string RecipientPhone { get; set; } = "";
+    public string RecipientAddress { get; set; } = "";
     public string Content { get; set; } = "";
     public DeliveryType DeliveryType { get; set; }
     public float Weight { get; set; }

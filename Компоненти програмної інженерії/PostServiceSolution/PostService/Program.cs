@@ -13,7 +13,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
     options.UseAllOfToExtendReferenceSchemas();
-    options.UseAllOfToExtendReferenceSchemas();
     options.OperationFilter<PostService.Swagger.IdParameterFilter>();
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "PostService", Version = "v1", Description = "Облік поштових відправлень" });
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "PostService.xml"));
@@ -21,7 +20,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
-    scope.ServiceProvider.GetRequiredService<PostingDbContext>().Database.EnsureCreated();
+    scope.ServiceProvider.GetRequiredService<PostingDbContext>().InitializeDatabase();
 app.Use(async (context, next) =>
 {
     try { await next(context); }

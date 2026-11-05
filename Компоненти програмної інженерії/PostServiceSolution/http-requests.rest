@@ -9,8 +9,14 @@ POST {{baseUrl}}/postings
 Content-Type: application/json
 
 {
-  "from": "Дмитро, Київ",
-  "to": "Олена, Львів",
+  "from": "Київ",
+  "to": "Львів",
+  "senderName": "Дмитро Коваль",
+  "senderPhone": "+380671234567",
+  "senderAddress": "Відділення №12",
+  "recipientName": "Олена Бондар",
+  "recipientPhone": "+380931234567",
+  "recipientAddress": "Відділення №5",
   "content": "Книги",
   "deliveryType": 0,
   "weight": 2,
@@ -32,8 +38,14 @@ PUT {{baseUrl}}/postings/{{createPosting.response.body.$.id}}
 Content-Type: application/json
 
 {
-  "from": "Дмитро, Київ",
-  "to": "Олена, Львів",
+  "from": "Київ",
+  "to": "Львів",
+  "senderName": "Дмитро Коваль",
+  "senderPhone": "+380671234567",
+  "senderAddress": "Відділення №12",
+  "recipientName": "Олена Бондар",
+  "recipientPhone": "+380931234567",
+  "recipientAddress": "Відділення №5",
   "content": "Книги",
   "deliveryType": 1,
   "weight": 3,

@@ -3,10 +3,22 @@ namespace PostService.Dtos;
 /// <summary>Вхідні дані нового відправлення. Вартість розраховує сервер.</summary>
 public class PostingPostDto
 {
-    /// <summary>Відправник та його адреса.</summary>
+    /// <summary>Місто відправлення.</summary>
     public string From { get; set; } = "";
-    /// <summary>Отримувач та його адреса.</summary>
+    /// <summary>Місто отримання.</summary>
     public string To { get; set; } = "";
+    /// <summary>ПІБ відправника.</summary>
+    public string SenderName { get; set; } = "";
+    /// <summary>Телефон відправника.</summary>
+    public string SenderPhone { get; set; } = "";
+    /// <summary>Адреса або відділення відправлення.</summary>
+    public string SenderAddress { get; set; } = "";
+    /// <summary>ПІБ отримувача.</summary>
+    public string RecipientName { get; set; } = "";
+    /// <summary>Телефон отримувача.</summary>
+    public string RecipientPhone { get; set; } = "";
+    /// <summary>Адреса або відділення отримання.</summary>
+    public string RecipientAddress { get; set; } = "";
     /// <summary>Вміст відправлення.</summary>
     public string Content { get; set; } = "";
     /// <summary>Спосіб доставки 0 відділення 1 курʼєр 2 експрес.</summary>
